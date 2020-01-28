@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { AsyncStorage } from 'react-native';
+import { AsyncStorage } from 'react-native';
 
 // let url;
 // if (__DEV__) {
@@ -9,20 +9,20 @@ import axios from 'axios';
 // }
 
 const instance = axios.create({
-  baseURL: 'http://30895916.ngrok.io'
+  baseURL: 'http://e8934246.ngrok.io'
 });
 
-// instance.interceptors.request.use(
-//   async config => {
-//     const token = await AsyncStorage.getItem('token');
-//     if (token) {
-//       config.headers.Authorization = `Bearer ${token}`;
-//     }
-//     return config;
-//   },
-//   err => {
-//     return Promise.reject(err);
-//   }
-// );
+instance.interceptors.request.use(
+  async config => {
+    const token = await AsyncStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  err => {
+    return Promise.reject(err);
+  }
+);
 
 export default instance;
